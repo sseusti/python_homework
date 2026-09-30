@@ -8,9 +8,9 @@
 .
 ├── solutions/
 │   ├── 860-lemonadeChange/
-│   │   └── solution.py
+│   │   └── sollution.py
 │   └── ...
-├── pyproject.toml
+├── project.toml
 ├── .pre-commit-config.yaml
 └── README.md
 ```
