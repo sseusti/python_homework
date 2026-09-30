@@ -7,7 +7,7 @@
 ```text
 .
 ├── solutions/
-│   ├── 860-lemonade-change/
+│   ├── 860-lemonadeChange/
 │   │   └── solution.py
 │   └── ...
 ├── pyproject.toml
