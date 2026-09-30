@@ -7,21 +7,28 @@ Given an integer array bills where bills[i] is the bill the ith customer pays, r
 
 
 def lemonadeChange(bills: list[int]) -> bool:
-    cash = {"5": 0, "10": 0, "20": 0}
+    cash = {"5": 0, "10": 0}
 
-    for i in bills:
-        cash[str(i)] += 1
-        if i == 10:
+    for c in bills:
+        if c == 5:
+            cash["5"] += 1
+
+        elif c == 10:
+            if cash["5"] == 0:
+                return False
+
+            cash["10"] += 1
             cash["5"] -= 1
-        elif i == 20:
-            if cash["10"] > 0:
+
+        elif c == 20:
+            if cash["10"] > 0 and cash["5"] > 0:
                 cash["10"] -= 1
                 cash["5"] -= 1
-            else:
+
+            elif cash["5"] >= 3:
                 cash["5"] -= 3
 
-        for _, v in cash.items():
-            if v < 0:
+            else:
                 return False
 
     return True
