@@ -5,6 +5,8 @@ received for their ith paper and citations is sorted in non-descending order,
 return the researcher's h-index.
 """
 
+PATH = "problems/275-hIndexII/data/hIndexTest.txt"
+
 
 def hIndex(citations: list[int]) -> int:
     citations = citations[::-1]
@@ -14,6 +16,18 @@ def hIndex(citations: list[int]) -> int:
             return i
         i += 1
     return len(citations)
+
+
+def getTestCases() -> list[tuple[list[int], int]]:
+    with open(PATH) as file:
+        testCases = []
+
+        for line in file:
+            citations, expected = line.strip().split("|")
+
+            testCases.append((list(map(int, citations.split())), int(expected)))
+
+    return testCases
 
 
 if __name__ == "__main__":
