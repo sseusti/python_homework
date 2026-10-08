@@ -1,7 +1,8 @@
 from unittest.mock import MagicMock, patch
-from sollution import getTestCases, hIndex
 
 import pytest
+
+from sollution import getTestCases, hIndex
 
 
 @patch("test_HIndexMock.getTestCases")
