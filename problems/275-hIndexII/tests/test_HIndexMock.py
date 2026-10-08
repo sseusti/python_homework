@@ -36,3 +36,15 @@ def testHIndexMockCallArguments(mockGetTestCases: MagicMock) -> None:
     getTestCases()
 
     mockGetTestCases.assert_called_once_with()
+
+
+@patch("test_HIndexMock.hIndex")
+def testHIndexCall(mockHIndex: MagicMock) -> None:
+    mockHIndex.return_value = 3
+
+    citations: list[int] = [0, 1, 3, 5, 6]
+
+    result: int = hIndex(citations)
+
+    assert result == 3
+    mockHIndex.assert_called_once_with(citations)
