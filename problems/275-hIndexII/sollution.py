@@ -9,13 +9,17 @@ PATH = "problems/275-hIndexII/data/hIndexTest.txt"
 
 
 def hIndex(citations: list[int]) -> int:
-    citations = citations[::-1]
-    i = 0
-    while i < len(citations):
-        if i >= citations[i]:
-            return i
-        i += 1
-    return len(citations)
+    citations = sorted(citations, reverse=True)
+
+    hIndexValue: int = 0
+
+    for i, citation in enumerate(citations, start=1):
+        if citation >= i:
+            hIndexValue = i
+        else:
+            break
+
+    return hIndexValue
 
 
 def getTestCases() -> list[tuple[list[int], int]]:
