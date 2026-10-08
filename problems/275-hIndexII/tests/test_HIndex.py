@@ -2,6 +2,8 @@ import sys
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import pytest
+
 sys.path.append(str(Path(__file__).parent.parent))
 
 from sollution import getTestCases, hIndex
@@ -29,3 +31,11 @@ def testHIndexWithMock(mockGetTestCases: MagicMock) -> None:
         assert hIndex(citations) == expected
 
     mockGetTestCases.assert_called_once()
+
+
+@patch("test_HIndex.getTestCases")
+def testHIndexWhenDataSourceFails(mockGetTestCases: MagicMock) -> None:
+    mockGetTestCases.side_effect = FileNotFoundError
+
+    with pytest.raises(FileNotFoundError):
+        getTestCases()
