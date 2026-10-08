@@ -39,3 +39,12 @@ def testHIndexWhenDataSourceFails(mockGetTestCases: MagicMock) -> None:
 
     with pytest.raises(FileNotFoundError):
         getTestCases()
+
+
+@patch("test_HIndex.getTestCases")
+def testHIndexMockCallArguments(mockGetTestCases: MagicMock) -> None:
+    mockGetTestCases.return_value = [([0, 1, 3, 5, 6], 3)]
+
+    getTestCases()
+
+    mockGetTestCases.assert_called_once_with()
