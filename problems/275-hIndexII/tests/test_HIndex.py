@@ -20,6 +20,7 @@ def testHIndexWithMock(mockGetTestCases: MagicMock) -> None:
         ([100, 100, 100, 100, 100], 5),
         ([1, 1, 1, 1, 1], 1),
         ([0, 0, 0], 0),
+        ([10, 10, 10, 10, 10, 10], 6),
     ]
 
     testCases = getTestCases()
