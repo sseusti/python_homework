@@ -16,9 +16,15 @@ def testHIndexFromFile() -> None:
 
 @patch("test_HIndex.getTestCases")
 def testHIndexWithMock(mockGetTestCases: MagicMock) -> None:
-    mockGetTestCases.return_value = [([100, 100, 100, 100, 100], 5)]
+    mockGetTestCases.return_value = [
+        ([100, 100, 100, 100, 100], 5),
+        ([1, 1, 1, 1, 1], 1),
+        ([0, 0, 0], 0),
+    ]
 
     testCases = getTestCases()
 
     for citations, expected in testCases:
         assert hIndex(citations) == expected
+
+    mockGetTestCases.assert_called_once()
